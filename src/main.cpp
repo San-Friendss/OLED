@@ -14,11 +14,10 @@
 
 // 0 is manual mode, 1 is auto mode
 int mode = 0;
-int test;
 
 // Your WiFi credentials.
-char ssid[] = "ติ๊งต่าง";
-char pass[] = "12345678";
+char ssid[] = "apkmew";
+char pass[] = "6410500360";
 
 // 'robot', 128x64px
 const unsigned char epd_bitmap_robot [] PROGMEM = {
@@ -185,11 +184,6 @@ BLYNK_WRITE(V0) // change mode
 	mode = param.asInt();
 }
 
-BLYNK_WRITE(V1) 
-{
-	test = param.asInt();
-}
-
 BLYNK_CONNECTED()
 {
 	// Change Web Link Button message to "Congratulations!"
@@ -235,21 +229,13 @@ void setup()
 void loop()
 {
 	Blynk.run();
-	// display.clearDisplay();
-	// // display count animation image
-	// display.drawBitmap(0, 0, R, 128, 64, WHITE);
-	// display.display();
-	// // increment counter
-	// count--;
-	// if (count < 0)
-	// 	count = 9;
-	// delay(40);
-	Serial.println(test);
-	if (test == 0)
+	Serial.println(mode);
+	if (mode == 0)
 	{
 		display.clearDisplay();
 		//display epd_bitmap_joy
-		display.drawBitmap(0, 0, epd_bitmap_joy, 128, 64, 1);
+		display.drawBitmap(0, 0, 
+		epd_bitmap_joy, 128, 64, 1);
 		display.display();
 	}
 	else
